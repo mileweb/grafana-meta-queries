@@ -83,6 +83,14 @@
         <i class="fa fa-warning"></i>
       </label>
 
+      <label class="gf-form-label query-keyword width-12">
+        Underlying Query Type
+      </label>
+      <div class="gf-form-select-wrapper max-width-15">
+        <select ng-model="ctrl.target.underlyQueryType" class="gf-form-input" ng-options="type for type in ctrl.underlyQueryTypes" ng-change="ctrl.targetBlur()">
+        </select>
+        <info-popover mode="right-absolute">tips: </info-popover>
+      </div>      
     </div>
   </div>
 </query-editor-row>

@@ -34,7 +34,13 @@ export class MetaQueriesQueryCtrl extends QueryCtrl {
       "Arithmetic": this.validateArithmeticQuery.bind(this),
     };
 
+    // underlyQueryTypes = ["", "ES-groupBy", "Druid-topN", "Druid-groupBy"];
+    // Don't add undelying query type for Es for the reason that we need to compatible with previouse version.
+    underlyQueryTypes = ["", "Druid-topN", "Druid-groupBy"];
+
+
     defaultQueryType = "TimeShift";
+    defaultUnderlyQueryType = "";
 
     defaultPeriods = 7;
 
@@ -46,6 +52,10 @@ export class MetaQueriesQueryCtrl extends QueryCtrl {
       if (!this.target.queryType) {
         this.target.queryType = this.defaultQueryType;
       }
+
+    if (!this.target.underlyQueryType) {
+      this.target.underlyQueryType = this.defaultUnderlyQueryType;
+    }      
 
     this.queryTypes = _.keys(this.queryTypeValidators);
 
